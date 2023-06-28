@@ -2,19 +2,39 @@
 {% block content %}
 
 <div class="col-md-6 offset-md-3">
-    <h1>Add Record</h1>
+    <h1 style="text-align: center;">Add Record</h1>
     <br/>
+    
+    <style>
+        .form-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 50px;
+        }
+    </style>
     
     <form method="POST" action="{% url 'add_record' %}">
         {% csrf_token %}
     
-        {{ form.as_p }}
+        <div class="form-container">
+            {{ form.first_name }}
+            {{ form.last_name }}
+            {{ form.email }}
+            {{ form.phone }}
+            {{ form.address }}
+            {{ form.city }}
+            {{ form.state }}
+            {{ form.zipcode }}
+            {{ form.department }}
+            {{ form.gender }}
+        </div>
     
-    <br/>
-      <button type="submit" class="btn btn-secondary">Add Record</button>
-       <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-    
+        <br/>
+        <button type="submit" class="btn btn-secondary" style="margin-left: 180px;">Add Record</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary" style="margin-left: 20px;">Back</a>
     </form>
+    
 </div>
 
 {% endblock %}
+
