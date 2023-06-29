@@ -1,24 +1,63 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="col-md-6 offset-md-3">
-    <h1>Register</h1></br>
-    <form method="POST" action="">
-        {% csrf_token %}
-        {% if form.errors %}
-			<div class="alert alert-warning alert-dismissible fade show" role="alert">
-			  Your Form Has Errors
-			  {% for field in form %}
-			  	{% if field.errors %}
-			  		{{ field.errors }}
-			  	{% endif %}
-			  {% endfor %}
-			  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			</div>
-		{% endif %}
-        {{ form.as_p }}
-        <br/>
-        <button type="submit" class="btn btn-secondary">Register</button>
-    </form>
-</div>
-{% endblock %}
-
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django CRM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...insert-integrity-hash-here..." crossorigin="anonymous" />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div id="bg-image">
+      <style>
+        #bg-image {
+          background-image: url('{% static "website/banner.jpg" %}');
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 100vh; /* Set the height to cover the entire screen */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .transparent-container {
+          background-color: rgba(255, 255, 255, 0.7); /* Set the background color with transparency */
+          padding-top: 40px;
+          padding-right: 90px;
+          padding-left: 90px;
+          padding-bottom: 40px;
+          border-radius: 10px;
+          max-width: 80%;
+        }
+        .center-align {
+          display: flex;
+          justify-content: center;
+        }
+      </style>
+      <div class="transparent-container">
+        <h1 style="text-align: center;">Register</h1><br>
+        <form method="POST" action="">
+          {% csrf_token %}
+          {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              Your Form Has Errors
+              {% for field in form %}
+                {% if field.errors %}
+                  {{ field.errors }}
+                {% endif %}
+              {% endfor %}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endif %}
+          {{ form.as_p }}
+          <br>
+          <div class="center-align">
+            <button type="submit" class="btn btn-secondary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

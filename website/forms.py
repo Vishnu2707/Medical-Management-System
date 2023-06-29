@@ -99,17 +99,20 @@ class AddRecordForm(forms.ModelForm):
         ('LD', 'Lakshadweep'),
         ('PY', 'Puducherry'),
 	]
-    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="")
-    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="")
-    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="")
-    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Phone", "class":"form-control"}), label="")
-    address = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Address", "class":"form-control"}), label="")
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"First Name", "class":"form-control"}), label="First Name")
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Last Name", "class":"form-control"}), label="Last Name")
+    email = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Email", "class":"form-control"}), label="Email")
+    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Phone", "class":"form-control"}), label="Phone")
+    address = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Address", "class":"form-control"}), label="Address")
     city = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"City", "class":"form-control"}), label="City")
     state = forms.ChoiceField(required=True, choices=INDIA_STATES, widget=forms.widgets.Select(attrs={"class": "form-control"}), label="State")
-    zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Zipcode", "class":"form-control"}), label="")
+    zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Zipcode", "class":"form-control"}), label="Pincode")
     department = forms.ChoiceField(required=True, choices=DEP_CHOICES, widget=forms.widgets.Select(attrs={"class": "form-control selectpicker", "data-live-search": "true"}), label="Department")
     gender = forms.ChoiceField(required=True, choices=GENDER_CHOICES, widget=forms.widgets.Select(attrs={"class": "form-control selectpicker", "data-live-search": "true"}), label="Gender")
-    employee_id = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Employee ID", "class":"form-control"}), label="")  # Add the Employee ID field
+    employee_id = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Employee ID", "class":"form-control"}), label="Employee ID")  # Add the Employee ID field
+    history_record = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={"placeholder":"Case History", "class":"form-control"}), label="Case History")
+    file = forms.FileField(required=False, label="File")
+
 
     class Meta:
         model = Record

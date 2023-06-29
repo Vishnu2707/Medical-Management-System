@@ -16,7 +16,9 @@ def home(request):
             Q(last_name__icontains=query) |
             Q(email__icontains=query) |
             Q(phone__icontains=query) |
+            Q(address__icontains=query) |
             Q(city__icontains=query) |
+            Q(department__icontains=query) |
             Q(state__icontains=query)
         )
     else:
@@ -50,7 +52,7 @@ def register_user(request):
         if form.is_valid():
             # Check if employee ID is authorized
             employee_id = form.cleaned_data['employee_id']
-            authorized_ids = ['id1', 'id2', 'id3']  # Update with your list of authorized IDs
+            authorized_ids = ['1000', '1001', '1002', '1003', '1004', '1005']  # Update with your list of authorized IDs
             if employee_id not in authorized_ids:
                 messages.error(request, "You're not authorized.")
                 return redirect('register')
@@ -110,6 +112,19 @@ def update_record(request, pk):
 			messages.success(request, "Record Has Been Updated!")
 			return redirect('home')
 		return render(request, 'update_record.html', {'form':form})
+	else:
+		messages.success(request, "You Must Be Logged In...")
+		return redirect('home')
+
+def history_record(request, pk):
+	if request.user.is_authenticated:
+		curr_record = Record.objects.get(id=pk)
+		form = AddRecordForm(request.POST or None, instance=curr_record)
+		if form.is_valid():
+			form.save()
+			messages.success(request, "Record Has Been Updated!")
+			return redirect('home')
+		return render(request, 'history_record.html', {'form':form})
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')

@@ -78,6 +78,7 @@ class Record(models.Model):
 	department = models.CharField(max_length=50, choices=DEP_CHOICES, default=None, blank=True, null=True)
 	gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default=None, blank=True, null=True)
 	employee_id = models.CharField(max_length=50, default=None, blank=True, null=True) # Add the Employee ID field
-
+	history_record = models.CharField(max_length=1000, default=None, blank=True, null=True)
+	file = models.FileField(upload_to='uploads/', default=None, blank=True, null=True)
 	def __str__(self):
 		return(f"{self.first_name} {self.last_name}")
