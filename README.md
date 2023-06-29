@@ -1,3 +1,5 @@
+<img width="1437" alt="Screenshot 2023-06-30 at 2 04 40 AM" src="https://github.com/Vishnu2707/Medical-Management-System/assets/86302373/583aa460-60bd-4314-87bf-4da788bb68c7">
+
 # Medical-Management-System Webapp
 
 Commands to handle GIT!
